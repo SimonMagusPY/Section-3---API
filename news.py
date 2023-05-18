@@ -1,31 +1,24 @@
-import requests
+
 import os
 from dotenv import load_dotenv
+from extract import get_news_headlines
 
-load_dotenv()
+def get_api_key():
+    load_dotenv()
+    return os.getenv('apiKey')
 
-api = os.getenv('apiKey')
+def print_headlines(headlines):
+    for headline in headlines:
+        print(headline)
 
+# Get the API key
+api_key = get_api_key()
+
+# Set the category and country
 category = 'business'
 country = 'us'
-url = f"https://newsapi.org/v2/top-headlines?country={country}&category={category}&apiKey={api}"
+# Get the news headlines
+headlines = get_news_headlines(category, country, api_key)
 
-response = requests.get(url)
-content = response.json()
-
-# Assuming the JSON response is stored in the 'content' variable
-articles = content['articles']  # Access the 'articles' list
-
-headlines = []  # Initialize an empty list to store the headlines
-
-# Iterate over each article and extract the 'title' key
-for article in articles:
-    title = article['title']  # Extract the 'title' key
-    headlines.append(title)  # Add the title to the headlines list
-
-# Print the extracted headlines
-for headline in headlines:
-    print(headline)
-
-
-
+# Print the headlines
+print_headlines(headlines)
