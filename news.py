@@ -15,8 +15,20 @@ def print_headlines(headlines):
 api_key = get_api_key()
 
 # Set the category and country
-category = 'business'
-country = 'us'
+categories = ['business', 'entertainment','general', 'health', 'science', 'sports', 'technology']
+countries = ['us', 'za']
+
+# Prompt the user for category and country
+category = input(f"Enter a category ({', '.join(categories)}): ")
+while category not in categories:
+    print("Invalid category. Please choose from the available categories.")
+    category = input(f"Enter a category ({', '.join(categories)}): ")
+
+country = input(f"Enter a country ({', '.join(countries)}): ")
+while country not in countries:
+    print("Invalid country. Please choose from the available countries.")
+    country = input(f"Enter a country ({', '.join(countries)}): ")
+
 # Get the news headlines
 headlines = get_news_headlines(category, country, api_key)
 
