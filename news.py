@@ -19,8 +19,15 @@ country = st.selectbox("Select a country", countries)
   
 # Create a button to fetch and display the headlines
 if st.button("Fetch Headlines"):
-    # Get the news headlines
-    headlines = get_news_headlines(category, country, api_key)
-    # Display the headlines       
-    for headline in headlines:
-        st.write(headline)
+    # Get the news data
+    articles = get_news_headlines(category, country, api_key)
+
+    # Display the headlines and URLs
+    
+    for article in articles:
+        headline = article.get('title', 'No Title')
+        url = article.get('url', 'No URL')
+        st.write(f"Headline: {headline}")
+        st.write(f"URL: {url}")
+        st.write("---")
+            
