@@ -4,12 +4,9 @@ from dotenv import load_dotenv
 from extract import get_news_headlines
 import streamlit as st
 
-def get_api_key():
-    load_dotenv()
-    return os.getenv('apiKey')
 
-# Get the API key
-api_key = get_api_key()
+load_dotenv()
+api_key = os.getenv('apiKey')
 
 # Set the category and country
 categories = ['business', 'entertainment','general', 'health', 'science', 'sports', 'technology']
