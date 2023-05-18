@@ -27,7 +27,7 @@ if st.button("Fetch Headlines"):
     for article in articles:
         headline = article.get('title', 'No Title')
         url = article.get('url', 'No URL')
-        st.write(f"Headline: {headline}")
-        st.write(f"URL: {url}")
+        st.markdown(f"**Headline:** {headline}")
+        st.markdown(f"**URL:** {url}")
         st.write("---")
             
