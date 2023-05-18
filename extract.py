@@ -6,4 +6,4 @@ def get_news_headlines(category, country, api_key):
     content = response.json()
     articles = content['articles']
     headlines = [article['title'] for article in articles]
-    return headlines
+    return headlines[: 5]
