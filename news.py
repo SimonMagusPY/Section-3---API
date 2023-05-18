@@ -24,8 +24,6 @@ country = st.selectbox("Select a country", countries)
 if st.button("Fetch Headlines"):
     # Get the news headlines
     headlines = get_news_headlines(category, country, api_key)
-
-    # Display the headlines
-       
+    # Display the headlines       
     for headline in headlines:
         st.write(headline)
