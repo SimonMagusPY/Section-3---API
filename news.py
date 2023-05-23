@@ -39,6 +39,6 @@ if st.button("Fetch Headlines"):
         csv_data.append([headline, url])
 
     # Open the CSV file and write the data
-    with open('article_data.csv', 'w', newline='') as csvfile:
+    with open('article_data.csv', 'a', newline='') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerows(csv_data) 
