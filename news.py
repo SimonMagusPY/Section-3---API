@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 from extract import get_news_headlines
 import streamlit as st
+import csv
 
 
 load_dotenv()
@@ -21,7 +22,10 @@ country = st.selectbox("Select a country", countries)
 if st.button("Fetch Headlines"):
     # Get the news data
     articles = get_news_headlines(category, country, api_key)
-
+    
+    # Save the headlines and URLs to a CSV file
+    csv_data = []
+    csv_data.append(['Headline', 'URL'])  # Add header row # Write header row
     # Display the headlines and URLs
     
     for article in articles:
@@ -30,4 +34,11 @@ if st.button("Fetch Headlines"):
         st.markdown(f"**Headline:** {headline}")
         st.markdown(f"**URL:** {url}")
         st.write("---")
-            
+
+        # Append data to CSV data list
+        csv_data.append([headline, url])
+
+    # Open the CSV file and write the data
+    with open('article_data.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerows(csv_data) 
