@@ -14,12 +14,14 @@ categories = ['business', 'entertainment','general', 'health', 'science', 'sport
 countries = ['us', 'za']
 
 st.title("News Headlines")
+
+st.sidebar.title("Select An Option")
 # Prompt the user for category and country
-category = st.selectbox("Select a category", categories)
-country = st.selectbox("Select a country", countries)
+category = st.sidebar.selectbox("Select a category", categories)
+country = st.sidebar.selectbox("Select a country", countries)
   
 # Create a button to fetch and display the headlines
-if st.button("Fetch Headlines"):
+if st.sidebar.button("Fetch Headlines"):
     # Get the news data
     articles = get_news_headlines(category, country, api_key)
     
