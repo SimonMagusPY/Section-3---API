@@ -13,14 +13,17 @@ api_key = os.getenv('apiKey')
 categories = ['business', 'entertainment','general', 'health', 'science', 'sports', 'technology']
 countries = ['us', 'za']
 
+#Set Page Title
 st.title("News Headlines")
 
+#Set Sidebar Title
 st.sidebar.title("Select An Option")
+
 # Prompt the user for category and country
 category = st.sidebar.selectbox("Select a category", categories)
 country = st.sidebar.selectbox("Select a country", countries)
   
-# Create a button to fetch and display the headlines
+# Create a button to fetch and display the headlines and run if clicked
 if st.sidebar.button("Fetch Headlines"):
     # Get the news data
     articles = get_news_headlines(category, country, api_key)
@@ -28,8 +31,8 @@ if st.sidebar.button("Fetch Headlines"):
     # Save the headlines and URLs to a CSV file
     csv_data = []
     csv_data.append(['Headline', 'URL'])  # Add header row # Write header row
-    # Display the headlines and URLs
     
+    # Display the headlines and URLs
     for article in articles:
         headline = article.get('title', 'No Title')
         url = article.get('url', 'No URL')
