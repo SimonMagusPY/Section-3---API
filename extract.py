@@ -14,7 +14,7 @@ def get_news_headlines(category, country, api_key):
     """
     # Construct the URL for the News API request
     url = f"https://newsapi.org/v2/top-headlines?country={country}&category={category}&apiKey={api_key}"
-
+    
     # Send a GET request to the News API
     response = requests.get(url)
 
